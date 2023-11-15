@@ -1,0 +1,73 @@
+.common-section {
+  margin: 2rem 0;
+
+  /* background-color: transparent; */
+}
+
+.our-services img {
+  width: 100%;
+  height: 75%;
+  margin-top: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.8rem 0.8rem;
+  border-radius: 1.5rem;
+}
+.our-services img:hover {
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 1s ease;
+}
+.our-services .mini-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(33, 36, 135, 0.95);
+}
+
+.our-services .main-heading {
+  font-weight: bolder;
+}
+
+.our-services-info {
+  margin-top: 1rem;
+}
+
+.our-services .our-services-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 0.1rem solid var(--primary-color);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  display: grid;
+  place-items: center;
+}
+.our-services-data {
+  padding-left: 1rem;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 100%;
+}
+.our-services-data h2 {
+  font-weight: bold;
+  color: #141485;
+}
+.our-services .our-services-data p {
+  margin: 1rem 0;
+}
+
+/* 2nd section of about us  */
+
+.our-services-rightside {
+  margin-top: 10rem;
+}
+
+.our-services-rightside-content {
+  padding-left: 2rem;
+}
+.our-services-rightside-content .mini-title {
+  text-align: center;
+}

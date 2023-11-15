@@ -1,0 +1,28 @@
+.ncc-achievements {
+  display: flex;
+  height: auto;
+}
+
+.achieve {
+  flex: 100%;
+  /* background-color: #f0f0f0;  */
+  margin-top: 2rem;
+  /* border: 2px solid red; */
+  margin-right: 2rem;
+  margin-left: 6rem;
+  align-items: center;
+}
+
+.side-comp {
+  flex: 30%;
+  /* background-color: #e0e0e0; 
+  border: 2px solid black; */
+}
+.text-dark-purple {
+  --tw-text-opacity: 1;
+  color: hsla(242, 83%, 7%, var(--tw-text-opacity));
+}
+.text-accent {
+  --tw-text-opacity: 1;
+  color: hsla(201, 96%, 32%, var(--tw-text-opacity));
+}

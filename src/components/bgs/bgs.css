@@ -1,0 +1,97 @@
+.container-style {
+  margin-top: 200px;
+  height: 50%;
+  position: relative;
+  border: 2px solid red;
+}
+.description {
+  width: 600px;
+  position: absolute;
+  z-index: 999;
+  color: aliceblue;
+  top: 20%;
+  left: 10%;
+}
+.description h1 {
+  font-size: 46px;
+}
+.description p {
+  font-size: 22px;
+}
+.carousel-boult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-boult span {
+  width: 45px;
+  height: 12px;
+  background-color: rgb(179, 178, 176);
+  margin-left: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 3px 2px 2px rgba(73, 72, 72, 0.338);
+}
+.ncc_c {
+  width: 100%;
+  height: 720px;
+}
+.carousel-item {
+  position: relative;
+  text-align: center;
+ 
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+}
+.background-slider-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.background-slider-image {
+  margin-top: 250px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+  color: white; /* Adjust the text color */
+}
+
+.carousel-caption {
+  font-size: 24px; /* Adjust the font size */
+  /* Add other styles for the caption */
+}
+
+/* Add styles for other content as needed */
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/

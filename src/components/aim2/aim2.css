@@ -1,0 +1,11 @@
+.ncc-aim {
+  width: 100%;
+  height: 300px;
+  background-image: url("../../assets/carousel3.jpg");
+  object-fit: cover;
+  filter: brightness(40%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

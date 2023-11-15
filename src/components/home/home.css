@@ -1,0 +1,182 @@
+body {
+  background-color: transparent;
+}
+
+.carousel-home {
+  margin-top: 161.5px;
+}
+.carousel-item {
+  margin-top: 0px;
+}
+
+.Our_AIM {
+  padding-right: 2em;
+  width: 100%;
+  padding-top: 10px;
+  background: linear-gradient(180deg, #d3dff1 82.81%, #f3f9ff 100%);
+  /* background: #d3dff1; */
+}
+
+.Pledge {
+  padding-right: 2em;
+  width: 100%;
+  padding-top: 40px;
+  /* margin-top: 10px; */
+  /* margin-bottom: 40px; */
+  background: #f3f9ff;
+}
+
+.aim {
+  width: 50%;
+  margin-left: 25%;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  background: #053d4d;
+  border-radius: 12px;
+  border-radius: 12px;
+}
+
+.pldge {
+  width: 50%;
+  margin-left: 25%;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* margin-top: 40px; */
+  margin-bottom: 15px;
+  background: #053d4d;
+  border-radius: 12px;
+  border-radius: 12px;
+}
+
+.ncc-song {
+  padding-top: 40px;
+  background: linear-gradient(0deg, #d3dff1 82.81%, #f3f9ff 100%);
+  margin-bottom: 0;
+}
+.ncc-song p {
+  margin-bottom: 0rem;
+}
+.ncc-song a {
+  text-decoration: none;
+  color: #053d4d;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@700&display=swap");
+.aim-pledge-heading {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.2em;
+  margin: 0px;
+  color: #fff;
+}
+
+.pics {
+  margin-top: 20px;
+  margin-left: 0px;
+  width: 550px;
+}
+
+.text {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 26px;
+  margin: 1.5em;
+  text-align: justify;
+  color: #1b1b1b;
+}
+
+.song_text {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-family: "Lato", sans-serif;
+}
+
+.reference {
+  text-align: end;
+  font-size: xx-small;
+  margin: 0px;
+}
+
+.reference p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 970px) {
+  .Our_AIM {
+    padding-right: 0px;
+  }
+  .Pledge {
+    padding-right: 0px;
+  }
+  .flex-container {
+    flex-direction: column;
+  }
+  .pics {
+    width: 80%;
+  }
+  .aim {
+    width: 88%;
+    margin-left: 6%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    background: #053d4d;
+    border-radius: 12px;
+    border-radius: 12px;
+  }
+  ul {
+    margin-right: 25px;
+  }
+  .pics {
+    position: relative;
+  }
+  .text {
+    font-weight: 400;
+  }
+  .heading {
+    text-decoration: none;
+    color: #212529;
+  }
+  .pldge {
+    width: 88%;
+    margin-left: 6%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: #053d4d;
+    border-radius: 12px;
+    border-radius: 12px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .carousel-home {
+    margin-top: 97px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .carousel-home {
+    margin-top: 76px;
+  }
+}
