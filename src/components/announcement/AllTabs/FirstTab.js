@@ -8,7 +8,15 @@ const Announcements = () => {
     const fetchAnnouncements = async () => {
       try {
         const response = await axios.get("http://localhost:3001/announcements");
-        setAnnouncements(response.data);
+
+        // Sort announcements by date in descending order (newest first)
+        const sortedAnnouncements = response.data.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA;
+        });
+
+        setAnnouncements(sortedAnnouncements);
       } catch (error) {
         console.error("Error fetching announcements:", error);
       }
@@ -25,12 +33,14 @@ const Announcements = () => {
   return (
     <div className="container mx-auto p-4">
       <ul className="list-disc">
+        {" "}
         {announcements.map((announcement) => (
           <li key={announcement._id} className="my-2">
-            <p>{announcement.announcement}</p>
+            <p> {announcement.announcement} </p>{" "}
+           
           </li>
-        ))}
-      </ul>
+        ))}{" "}
+      </ul>{" "}
     </div>
   );
 };
