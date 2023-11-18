@@ -4,11 +4,14 @@ import Activities from "./Activities.js";
 import "./aboutus.css";
 import img2 from "../images/2.jpg";
 import img3 from "../images/3.png";
+import Navbar2 from "../components/navbar/Navbar2.jsx";
+import Footer from "../components/footer/Footer";
 const Aboutus = () => {
   const [aboutData] = useState(Role);
   const [aboutData1] = useState(Activities);
   return (
     <>
+    <Navbar2/>
       <section className="common-section our-services">
         <div className="container mb-5">
           <div className="row">
@@ -25,12 +28,14 @@ const Aboutus = () => {
 
                 return (
                   <>
+                  
                     <div className="row our-services-info" key={id}>
                       <div className="col-10 our-services-data">
                         <h2>{title}</h2>
                         <p className="main-hero-para">{info}</p>
                       </div>
                     </div>
+                   
                   </>
                 );
               })}
@@ -69,38 +74,9 @@ const Aboutus = () => {
       </section>
 
       {/*3rd part*/}
+      <Footer/>
     </>
   );
 };
 
 export default Aboutus;
-
-//  <section className="common-section our-services">
-//    <div className="container mb-5">
-//      <div className="row">
-//        <div className="col-12 col-lg-5 text-center our-service-leftside-img">
-//          <img src={img2} alt="aboutusIMg" />
-//        </div>
-
-//        {/* 1section right side data  */}
-//        <div className="col-12 col-lg-7 our-services-list">
-//          <h3 className="mini-title">ROLE OF NCC</h3>
-
-//          {aboutData2.map((curElem) => {
-//            const { id, title, info } = curElem;
-
-//            return (
-//              <>
-//                <div className="row our-services-info" key={id}>
-//                  <div className="col-10 our-services-data">
-//                    <h2>{title}</h2>
-//                    <p className="main-hero-para">{info}</p>
-//                  </div>
-//                </div>
-//              </>
-//            );
-//          })}
-//        </div>
-//      </div>
-//    </div>
-//  </section>;

@@ -13,6 +13,8 @@ import Aboutus from "./pages/AboutUs";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Alumni from "./pages/Alumni";
+import FAQ from "./pages/FAQ.jsx";
 import Protected from "./components/Protected";
 import {Routes, Route} from "react-router-dom";
 
@@ -38,8 +40,16 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
+    path: "faq",
+    element: <FAQ />,
+  },
+  {
     path: "login",
     element: <Login />,
+  },
+  {
+    path:"alumni",
+    element:<Alumni/>
   },
   {
     path: "home",

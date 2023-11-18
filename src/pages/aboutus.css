@@ -51,6 +51,9 @@
   margin-top: 0px;
   width: 100%;
 }
+.container{
+  margin-top:7rem;
+}
 .our-services-data h2 {
   font-weight: bold;
   color: #141485;

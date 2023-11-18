@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar2  from '../components/navbar/Navbar2';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +25,9 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <>
+ 
+    <div className="min-h-screen flex items-center justify-center h-screen">
       <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
         <h1 className="text-2xl font-semibold mb-6">Login Page</h1>
         <form onSubmit={handleSubmit} className='login-form'>
@@ -60,6 +63,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+    </>
   );
 }
 
