@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FAQ_child from './FAQ_child';
+import FAQ_child from "./FAQ_child";
 
 function FAQ() {
   const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ function FAQ() {
   ];
 
   return (
-    <div className="FAQ">
+    <div className="App">
       <section className="bg-blue-100 pt-8">
         <h4 className='height-[20px] text-center font-sans text-[40px] font-semibold'>FAQs</h4>
         <div className='flex justify-center'>
