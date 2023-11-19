@@ -3,10 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Eligibility from "./pages/Eligibility";
 import Enrollment from "./pages/Enrollment";
 import Aboutus from "./pages/AboutUs";
@@ -14,9 +11,9 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Alumni from "./pages/Alumni";
-import FAQ from "./pages/FAQ.jsx";
+// import FAQ from "./pages/FAQ.jsx";
 import Protected from "./components/Protected";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -39,21 +36,21 @@ const router = createBrowserRouter([
     path: "signup",
     element: <Signup />,
   },
-  {
-    path: "faq",
-    element: <FAQ />,
-  },
+  // {
+  //   path: "faq",
+  //   element: <FAQ />,
+  // },
   {
     path: "login",
     element: <Login />,
   },
   {
-    path:"alumni",
-    element:<Alumni/>
+    path: "alumni",
+    element: <Alumni />,
   },
   {
     path: "home",
-    element : <Home />,
+    element: <Home />,
   },
   // {
   //   path: "home",
@@ -68,10 +65,12 @@ const router = createBrowserRouter([
   // },
 ]);
 
-{/* <Routes>
+{
+  /* <Routes>
   <Route path="/home" element={<Home />} />
   <Route path="/login" element={<Login />} />
-</Routes> */}
+</Routes> */
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

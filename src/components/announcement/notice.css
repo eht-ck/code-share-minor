@@ -1,0 +1,44 @@
+.notice {
+  width: 1162px;
+  height: 53px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: #fff;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: row;
+}
+.star {
+  padding-left: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.notice-text {
+  width: 85%;
+  height: 35.824px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Inknut Antiqua;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1rem;
+}
+.new-label {
+  margin-top: 0.5rem;
+}
+.new_button {
+  width: 78%;
+}
+/* @media screen and (min-width: 1000px) {
+  .notice-container {
+    width: 400px;
+  }
+} */

@@ -10,6 +10,7 @@ import {
   Aim2,
   Achievements,
   Photo_gallery,
+  Announcement,
   Tabs,
 } from "./components";
 import "./App.css";
@@ -18,7 +19,8 @@ const App = () => {
     <div className="App">
       <Navbar /> {/* <Bgs /> */} <Hero />
       <Achievements />
-      <Tabs />
+      {/* <Tabs /> */}
+      <Announcement />
       <Aim2 />
       <Photo_gallery />
       <Blog testimonialData={data} /> <Footer />
