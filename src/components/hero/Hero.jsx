@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="content">
-        <p> 21 PB BN NC </p>{" "}
+        <p> 21 PB BN NCC </p>{" "}
         <p> DISCIPLINE PATRIOTISM LEADERSHIP MOTIVATION IT ALL REFLECTS </p>{" "}
       </div>{" "}
     </div>

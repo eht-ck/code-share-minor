@@ -1,9 +1,13 @@
+// Import necessary libraries and styles
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./notice.css";
+import "tailwindcss/tailwind.css"; // Import Tailwind CSS
 import new_button from "../../assets/new_button.jpg";
+import "./notice.css"; // Your existing CSS file
+
 const Notice = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
@@ -17,19 +21,25 @@ const Notice = () => {
           return dateB - dateA;
         });
 
-        setAnnouncements(sortedAnnouncements);
+        // Show only the top 5 announcements if showAll is false
+        const limitedAnnouncements = showAll
+          ? sortedAnnouncements
+          : sortedAnnouncements.slice(0, 5);
+
+        setAnnouncements(limitedAnnouncements);
       } catch (error) {
         console.error("Error fetching announcements:", error);
       }
     };
 
     fetchAnnouncements();
-  }, []);
+  }, [showAll]);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
   const ReadMore = ({ children }) => {
     const text = typeof children === "string" ? children : String(children);
     const [isReadMore, setIsReadMore] = useState(true);
@@ -52,9 +62,20 @@ const Notice = () => {
     );
   };
 
+  const handleShowMore = () => {
+    setShowAll(true);
+  };
+
+  // Determine if the container should be scrollable
+  const isScrollable = announcements.length > 5 || showAll;
+
   return (
-    <div className="announce-container overflow-y-auto">
-      <div className="notice-container">
+    <div
+      className={`announce-container ${
+        isScrollable ? "overflow-y-auto" : "overflow-y-hidden"
+      }`}
+    >
+      <div className="notice-container flex flex-col items-center">
         {announcements.map((announcement, index) => (
           <div key={announcement._id} className="notice">
             <div className="star">
@@ -81,9 +102,20 @@ const Notice = () => {
             )}
           </div>
         ))}
+        {!showAll && announcements.length > 5 && (
+          <div className="show-more-container mt-8">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleShowMore}
+            >
+              Show More
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Notice;
+  
