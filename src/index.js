@@ -10,6 +10,7 @@ import Aboutus from "./pages/AboutUs";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import FAQ from "./pages/FAQ";
 import Alumni from "./pages/Alumni";
 // import FAQ from "./pages/FAQ.jsx";
 import Protected from "./components/Protected";
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "home",
     element: <Home />,
+  },
+  {
+    path: "FAQ",
+    element: <FAQ />,
   },
   // {
   //   path: "home",
