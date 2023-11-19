@@ -1,4 +1,5 @@
 export { default as Navbar } from "./navbar/Navbar";
+export {default as Navbar2} from "./navbar/Navbar2";
 export { default as Home } from "./home/Home";
 export { default as Footer } from "./footer/Footer";
 export { default as Hero } from "./hero/Hero";

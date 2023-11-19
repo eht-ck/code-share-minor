@@ -23,7 +23,7 @@ const Tabs = () => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <TabNavItem
+          {/* <TabNavItem
             title="Tab 2"
             id="tab2"
             activeTab={activeTab}
@@ -40,7 +40,7 @@ const Tabs = () => {
             id="tab4"
             activeTab={activeTab}
             setActiveTab={setActiveTab}
-          />
+          /> */}
         </ul>
 
         <div className="outlet">

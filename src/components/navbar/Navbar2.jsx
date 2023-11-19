@@ -5,25 +5,14 @@ import { Link } from "react-router-dom";
 
 import "./navbar.css";
 
-const Navbar = () => {
-  //setting mobile nav
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-  // change navcolor when scrolling
-  const [color, setColor] = useState(false);
-  const changeColor = () => {
-    if (window.scrollY >= 90) {
-      setColor(true);
-    } else {
-      setColor(false);
-    }
-  };
-  window.addEventListener("scroll", changeColor);
-  //close menu on click
-  const closeMenu = () => setClick(false);
+const Navbar2 = () => {
+//setting mobile nav
+const [click, setClick] = useState(false);
+const handleClick = () => setClick(!click);
+const closeMenu = () => setClick(false);
 
   return (
-    <div className={color ? "header header-bg" : "header"}>
+    <div className="header header-bg">
       {/* <div className="header header-bg"> */}
       <nav className="navbar">
         <a href="/" className="logo">
@@ -84,4 +73,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar2;
