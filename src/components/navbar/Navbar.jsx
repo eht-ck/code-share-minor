@@ -50,7 +50,7 @@ const Navbar = () => {
             </Link>
           </li>{" "}
           <li className="nav-item">
-            <a href="#events" onClick={closeMenu}>
+            <a href="/events" onClick={closeMenu}>
               {" "}
               EVENTS{" "}
             </a>{" "}

@@ -1,5 +1,5 @@
 .notice {
-  width: 1162px;
+  width: 100%;
   height: 53px;
   flex-shrink: 0;
   border-radius: 50px;
@@ -7,6 +7,24 @@
   margin-top: 36px;
   display: flex;
   flex-direction: row;
+}
+
+.announce-container {
+  padding-left: 2rem;
+  padding-right: 5rem;
+  width: 90%;
+  height: 462px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #4fadf224;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 .star {
   padding-left: 17px;
@@ -31,14 +49,41 @@
   margin-bottom: auto;
   margin-right: 1rem;
 }
-.new-label {
-  margin-top: 0.5rem;
-}
-.new_button {
-  width: 78%;
-}
-/* @media screen and (min-width: 1000px) {
-  .notice-container {
-    width: 400px;
+@media screen and (min-width: 1197px) {
+  .new-label {
+    margin-top: 0.5rem;
   }
-} */
+  .new_button {
+    width: 78%;
+  }
+}
+@media screen and (min-width: 1056px) {
+  .new-label {
+    margin-top: 0.5rem;
+  }
+  .new_button {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 910x) {
+  .new-label {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+  }
+  .notice-text {
+    width: 81%;
+  }
+}
+@media screen and (min-width: 844x) {
+  .new-label {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+  }
+  .notice-text {
+    width: 77%;
+  }
+}
+.notice-container {
+  width: 100%;
+  height: fit-content;
+}

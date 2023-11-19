@@ -12,23 +12,6 @@
   margin-left: 5rem;
 }
 
-.announce-container {
-  padding-left: 2rem;
-  padding-right: 5rem;
-  width: fit-content;
-  height: 462px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  background: #4fadf224;
-  backdrop-filter: blur(2px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
-}
 .announcement {
   position: relative;
   display: flex;
@@ -61,8 +44,13 @@
   flex-shrink: 0;
   fill: #bf1010;
 }
-/* @media screen and (min-width: 1000px) {
+@media screen and (min-width: 1253px) {
   .announce-container {
-    width: 400px;
+    width: 85%;
   }
-} */
+}
+@media screen and (min-width: 791px) {
+  .announce-container {
+    width: 70%;
+  }
+}

@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Alumni from "./pages/Alumni";
+// import Events from "./Components/events/Events";
 // import FAQ from "./pages/FAQ.jsx";
 import Protected from "./components/Protected";
 import { Routes, Route } from "react-router-dom";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
     path: "home",
     element: <Home />,
   },
+  // {
+  //   path: "events",
+  //   element: <Events />,
+  // },
   // {
   //   path: "home",
   //   element: <Protected />,
