@@ -30,6 +30,27 @@ const Notice = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+  const ReadMore = ({ children }) => {
+    const text = typeof children === "string" ? children : String(children);
+    const [isReadMore, setIsReadMore] = useState(true);
+
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+
+    return (
+      <p className="text">
+        {isReadMore ? text.slice(0, 60) : text}
+        <span
+          onClick={toggleReadMore}
+          className="read-or-hide"
+          style={{ color: "blue" }}
+        >
+          {isReadMore ? "...Link" : "...Loading"}
+        </span>
+      </p>
+    );
+  };
 
   return (
     <div className="announce-container overflow-y-auto">
@@ -51,7 +72,7 @@ const Notice = () => {
               </svg>
             </div>
             <div className="notice-text">
-              <p>{announcement.announcement}</p>
+              <ReadMore>{announcement.announcement}</ReadMore>
             </div>
             {index === 0 && (
               <div className="new-label">

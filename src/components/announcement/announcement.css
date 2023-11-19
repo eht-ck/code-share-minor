@@ -29,7 +29,7 @@
 }
 .text {
   width: 600.538px;
-  height: 82.824px;
+  height: fit-content;
   flex-shrink: 0;
   color: #000;
   font-family: Inknut Antiqua;
@@ -37,6 +37,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin: 0 0 0 0;
 }
 .new-update {
   width: 117.497px;
