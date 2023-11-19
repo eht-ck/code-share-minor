@@ -30,35 +30,58 @@ const Notice = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+  const ReadMore = ({ children }) => {
+    const text = typeof children === "string" ? children : String(children);
+    const [isReadMore, setIsReadMore] = useState(true);
+
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+
+    return (
+      <p className="text">
+        {isReadMore ? text.slice(0, 60) : text}
+        <span
+          onClick={toggleReadMore}
+          className="read-or-hide"
+          style={{ color: "blue" }}
+        >
+          {isReadMore ? "...Link" : "...Loading"}
+        </span>
+      </p>
+    );
+  };
 
   return (
-    <div className="notice-container">
-      {announcements.map((announcement, index) => (
-        <div key={announcement._id} className="notice">
-          <div className="star">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="37"
-              viewBox="0 0 38 37"
-              fill="none"
-            >
-              <path
-                d="M19 0L23.2658 12.7832H37.0701L25.9022 20.6836L30.1679 33.4668L19 25.5664L7.83208 33.4668L12.0978 20.6832L0.929926 12.7832H14.7342L19 0Z"
-                fill="#0369A0"
-              />
-            </svg>
-          </div>
-          <div className="notice-text">
-            <p>{announcement.announcement}</p>
-          </div>
-          {index === 0 && (
-            <div className="new-label">
-              <img src={new_button} alt="New" className="new_button" />
+    <div className="announce-container overflow-y-auto">
+      <div className="notice-container">
+        {announcements.map((announcement, index) => (
+          <div key={announcement._id} className="notice">
+            <div className="star">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="37"
+                viewBox="0 0 38 37"
+                fill="none"
+              >
+                <path
+                  d="M19 0L23.2658 12.7832H37.0701L25.9022 20.6836L30.1679 33.4668L19 25.5664L7.83208 33.4668L12.0978 20.6832L0.929926 12.7832H14.7342L19 0Z"
+                  fill="#0369A0"
+                />
+              </svg>
             </div>
-          )}
-        </div>
-      ))}
+            <div className="notice-text">
+              <ReadMore>{announcement.announcement}</ReadMore>
+            </div>
+            {index === 0 && (
+              <div className="new-label">
+                <img src={new_button} alt="New" className="new_button" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
