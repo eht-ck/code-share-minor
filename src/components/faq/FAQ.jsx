@@ -60,7 +60,7 @@ function FAQ() {
   ];
 
   return (
-    <div className="App">
+    <div className="App mt-16">
       <section className="bg-blue-100 pt-8">
         <h4 className='height-[20px] text-center font-sans text-[40px] font-semibold'>FAQs</h4>
         <div className='flex justify-center'>
