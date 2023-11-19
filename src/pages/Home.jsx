@@ -44,9 +44,21 @@ const AdminDashboard = () => {
         return <Enrolled />;
       default:
         return (
-          <div>
-            {/* Your existing dashboard content goes here */}
-          </div>
+          <div className="bg-white p-8 rounded shadow-md mb-4">
+  <h2 className="text-3xl font-bold mb-4 text-gray-800">Admin Privileges</h2>
+  <p className="text-lg text-gray-700 mb-4">
+    As an admin, you have the following privileges:
+  </p>
+  <ul className="list-disc pl-6 mb-4">
+    <li className="text-base text-gray-800">Add and manage alumni details.</li>
+    <li className="text-base text-gray-800">Create and update announcements.</li>
+    <li className="text-base text-gray-800">View a list of currently enrolled students.</li>
+  </ul>
+  <p className="text-gray-700">
+    Make the most of these privileges to efficiently manage the NCC platform!
+  </p>
+</div>
+
         );
     }
   };
@@ -54,7 +66,7 @@ const AdminDashboard = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-1/4 bg-gray-800 p-4 text-white">
+      <div className="w-1/5 bg-gray-800 p-4 text-white">
         <h2 className="text-lg font-semibold mb-4">Admin Options</h2>
         <ul>
           <li
@@ -95,8 +107,8 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <div className="flex-1 p-8">
         <div className="bg-white p-8 rounded shadow-md mb-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Welcome to NCC Admin Dashboard
+          <h1 className="text-3xl font-bold text-gray-800">
+            Welcome to the NCC Admin Dashboard
           </h1>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none transition duration-300"
