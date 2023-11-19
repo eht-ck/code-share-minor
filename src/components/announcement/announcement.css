@@ -9,13 +9,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-left: 5rem;
 }
 
 .announce-container {
   padding-left: 2rem;
   padding-right: 5rem;
   width: fit-content;
-  height: 656px;
+  height: 462px;
   flex-shrink: 0;
   border-radius: 20px;
   background: #4fadf224;
@@ -25,12 +26,14 @@
   align-items: center;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 .announcement {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 .notice {
   width: 1162px;
@@ -58,3 +61,8 @@
   flex-shrink: 0;
   fill: #bf1010;
 }
+/* @media screen and (min-width: 1000px) {
+  .announce-container {
+    width: 400px;
+  }
+} */

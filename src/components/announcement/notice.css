@@ -37,3 +37,8 @@
 .new_button {
   width: 78%;
 }
+/* @media screen and (min-width: 1000px) {
+  .notice-container {
+    width: 400px;
+  }
+} */
