@@ -1,9 +1,11 @@
 // Import necessary libraries and styles
 import React from "react";
 import { motion } from "framer-motion";
-import "./App.css"; // Import your CSS file
+import "./events.css"; // Import your CSS file
 import img2 from "../../assets/carousel1.jpg";
 import img1 from "../../assets/carousel2.jpg";
+import Navbar from "../navbar/Navbar2";
+import Footer from "../footer/Footer";
 
 // Sample data for events
 const eventsData = [
@@ -22,29 +24,33 @@ const eventsData = [
 
 const Events = () => {
   return (
-    <div className="events-container">
-      <h1 className="events-title">
-        Upcoming <span style={{ color: "black" }}>Events</span>
-      </h1>
+    <>
+      <Navbar />
+      <div className="events-container">
+        <h1 className="events-title">
+          Upcoming <span style={{ color: "black" }}>Events</span>
+        </h1>
 
-      <div className="events-grid">
-        {eventsData.map((event) => (
-          <motion.div
-            key={event.id}
-            className="event-card"
-            whileHover={{ scale: 1.09 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.img
-              src={event.image}
-              alt={`Event ${event.id}`}
+        <div className="events-grid">
+          {eventsData.map((event) => (
+            <motion.div
+              key={event.id}
+              className="event-card"
               whileHover={{ scale: 1.09 }}
-            />
-            <p className="event-description">{event.description}</p>
-          </motion.div>
-        ))}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.img
+                src={event.image}
+                alt={`Event ${event.id}`}
+                whileHover={{ scale: 1.09 }}
+              />
+              <p className="event-description">{event.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
