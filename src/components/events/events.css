@@ -8,16 +8,21 @@
   font-size: 2rem;
   margin-bottom: 20px;
   text-transform: uppercase;
-  font-size: 1.875rem; /* Equivalent to text-3xl */
+  font-size: 1.875rem;
+
+  /* Equivalent to text-3xl */
   @media (min-width: 768px) {
-    font-size: 2.25rem; /* Equivalent to md:text-4xl */
+    font-size: 2.25rem;
+    /* Equivalent to md:text-4xl */
   }
+
   --tw-text-opacity: 1;
   color: hsla(201, 96%, 32%, var(--tw-text-opacity));
   font-weight: 600;
   padding-bottom: 0.5rem;
   text-align: center;
 }
+
 .events-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -31,6 +36,7 @@
   box-shadow: 1px 0px 11px #0369a0;
   cursor: pointer;
 }
+
 .event-card img {
   width: 100%;
   height: 75%;
@@ -50,5 +56,5 @@
   font-size: 1rem;
   font: bold;
   height: 25%;
-  background-color: #0369a0;
+
 }
