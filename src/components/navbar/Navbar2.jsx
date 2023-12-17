@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar2 = () => {
-//setting mobile nav
-const [click, setClick] = useState(false);
-const handleClick = () => setClick(!click);
-const closeMenu = () => setClick(false);
+  //setting mobile nav
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMenu = () => setClick(false);
 
   return (
     <div className="header header-bg">
@@ -39,7 +39,7 @@ const closeMenu = () => setClick(false);
             </Link>
           </li>{" "}
           <li className="nav-item">
-            <a href="#events" onClick={closeMenu}>
+            <a href="/events" onClick={closeMenu}>
               {" "}
               EVENTS{" "}
             </a>{" "}
