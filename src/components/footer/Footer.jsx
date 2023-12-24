@@ -128,7 +128,7 @@ const Footer = () => {
                 <div className="d-flex align-items-center pt-2">
                   <p id="content" className="m-0 pb-1 address">
                     Grand Trunk Road, Barnala - Amritsar Bypass Rd, Jalandhar,
-                    Punjab 144011, NIT Jalandhar
+                    Punjab 144008, NIT Jalandhar
                   </p>
                 </div>
               </div>
