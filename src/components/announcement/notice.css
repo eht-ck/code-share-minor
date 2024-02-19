@@ -79,6 +79,7 @@
 
 .new-announcement {
   background: #4fadf224;
+
   backdrop-filter: blur(1px);
   font-weight: bold;
   padding: 0rem;
@@ -88,6 +89,22 @@
 }
 
 .new-announcement:hover {
+  transform: translateY(-5px);
+  box-shadow: -7px 0px 8px rgba(54, 152, 219, 1.3);
+}
+.new-announcement2 {
+  background: #4fadf224;
+  width: 84%;
+  margin-bottom: 28px;
+  backdrop-filter: blur(1px);
+  font-weight: bold;
+  padding: 0rem;
+  border-radius: 15px;
+  box-shadow: -7px 0px 8px rgba(54, 152, 219, 1.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.new-announcement2:hover {
   transform: translateY(-5px);
   box-shadow: -7px 0px 8px rgba(54, 152, 219, 1.3);
 }
