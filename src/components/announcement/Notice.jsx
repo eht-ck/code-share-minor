@@ -58,8 +58,11 @@ const MarqueeGroup = styled.div`
   ${common}
 `;
 
+// ... (Your imports)
+
 const Notice = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [latestAnnouncement, setLatestAnnouncement] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
@@ -71,9 +74,11 @@ const Notice = () => {
           (a, b) => new Date(b.date) - new Date(a.date)
         );
 
+        setLatestAnnouncement(sortedAnnouncements[0]);
+
         const limitedAnnouncements = showAll
-          ? sortedAnnouncements
-          : sortedAnnouncements.slice(0, 5);
+          ? sortedAnnouncements.slice(1)
+          : sortedAnnouncements.slice(1, 6);
 
         setAnnouncements([...limitedAnnouncements, ...limitedAnnouncements]);
       } catch (error) {
@@ -94,16 +99,44 @@ const Notice = () => {
   return (
     <AppContainer>
       <Wrapper>
+        {/* Show only the latest announcement separately */}
+        {latestAnnouncement && (
+          <div
+            className={`notice new-announcement2 ${showAll ? "" : "hidden"}`}
+          >
+            <div className="star">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="37"
+                viewBox="0 0 38 37"
+                fill="none"
+              >
+                <path
+                  d="M19 0L23.2658 12.7832H37.0701L25.9022 20.6836L30.1679 33.4668L19 25.5664L7.83208 33.4668L12.0978 20.6832L0.929926 12.7832H14.7342L19 0Z"
+                  fill="#0369A0"
+                />
+              </svg>
+            </div>
+            <div className="notice-text">{latestAnnouncement.announcement}</div>
+            {showAll && (
+              <div className="new-label">
+                <img src={new_button} alt="New" className="new_button" />
+              </div>
+            )}
+          </div>
+        )}
+
         <Marquee
           onAnimationIteration={() =>
             setAnnouncements((announcements) => [
-              ...announcements.slice(5),
-              ...announcements.slice(0, 5),
+              announcements[announcements.length - 1],
+              ...announcements.slice(0, -1),
             ])
           }
         >
           <MarqueeGroup>
-            {announcements.map((announcement, index) => (
+            {announcements.slice(0, -1).map((announcement, index) => (
               <div
                 key={announcement._id}
                 className={`notice ${index === 0 ? "new-announcement" : ""}`}
@@ -123,11 +156,6 @@ const Notice = () => {
                   </svg>
                 </div>
                 <div className="notice-text">{announcement.announcement}</div>
-                {index === 0 && (
-                  <div className="new-label">
-                    <img src={new_button} alt="New" className="new_button" />
-                  </div>
-                )}
               </div>
             ))}
           </MarqueeGroup>
