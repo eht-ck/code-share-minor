@@ -1,16 +1,21 @@
+// Import necessary modules and components
 import { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import AlumniForm from "../components/AlumniForm";
 import AnnouncementForm from "../components/AnnouncementForm";
+import EditAnnouncementForm from "../components/EditAnnouncementForm"; // Import EditAnnouncementForm component
 import Enrolled from "../components/Enrolled";
 
+// Define AdminDashboard component
 const AdminDashboard = () => {
+  // Define state variables
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("dashboard");
 
+  // Function to handle logout
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -34,35 +39,38 @@ const AdminDashboard = () => {
     checkAuthentication();
   }, [user, navigate]);
 
+  // Function to render content based on selected option
   const renderContent = () => {
     switch (selectedOption) {
       case "addAlumni":
         return <AlumniForm />;
       case "addAnnouncement":
         return <AnnouncementForm />;
+      case "editAnnouncement": // Render EditAnnouncementForm when this option is selected
+        return <EditAnnouncementForm />;
       case "enrolledStudents":
         return <Enrolled />;
       default:
         return (
           <div className="bg-white p-8 rounded shadow-md mb-4">
-  <h2 className="text-3xl font-bold mb-4 text-gray-800">Admin Privileges</h2>
-  <p className="text-lg text-gray-700 mb-4">
-    As an admin, you have the following privileges:
-  </p>
-  <ul className="list-disc pl-6 mb-4">
-    <li className="text-base text-gray-800">Add and manage alumni details.</li>
-    <li className="text-base text-gray-800">Create and update announcements.</li>
-    <li className="text-base text-gray-800">View a list of currently enrolled students.</li>
-  </ul>
-  <p className="text-gray-700">
-    Make the most of these privileges to efficiently manage the NCC platform!
-  </p>
-</div>
-
+            <h2 className="text-3xl font-bold mb-4 text-gray-800">Admin Privileges</h2>
+            <p className="text-lg text-gray-700 mb-4">
+              As an admin, you have the following privileges:
+            </p>
+            <ul className="list-disc pl-6 mb-4">
+              <li className="text-base text-gray-800">Add and manage alumni details.</li>
+              <li className="text-base text-gray-800">Create and update announcements.</li>
+              <li className="text-base text-gray-800">View a list of currently enrolled students.</li>
+            </ul>
+            <p className="text-gray-700">
+              Make the most of these privileges to efficiently manage the NCC platform!
+            </p>
+          </div>
         );
     }
   };
 
+  // Return JSX
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
@@ -92,6 +100,14 @@ const AdminDashboard = () => {
             onClick={() => setSelectedOption("addAnnouncement")}
           >
             Add Announcement
+          </li>
+          <li
+            className={`${
+              selectedOption === "editAnnouncement" ? "font-bold" : ""
+            } py-2 px-4 cursor-pointer hover:bg-gray-700 transition duration-300`}
+            onClick={() => setSelectedOption("editAnnouncement")} // Set selectedOption to "editAnnouncement"
+          >
+            Edit Announcement
           </li>
           <li
             className={`${
