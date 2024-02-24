@@ -185,7 +185,23 @@ const Events = () => {
                   <h2 className="event-heading">{event.heading}</h2>
                   <p className="event-date">Date: {event.date}</p>
                   <p className="event-location">Location: {event.location}</p>
-                  <button className="view-more-button">View More</button>
+                  <button
+                    className="view-more-button"
+                    onClick={() => {
+                      /*const windowWidth = 800;
+                      const windowHeight = 800;
+                      const left = window.screen.width / 2 - windowWidth / 2;
+                      const top = window.screen.height / 2 - windowHeight / 2;
+                      const newWindow = window.open("", "_blank", "width=800,height=800");
+                      newWindow.document.write("<h1>Event Details</h1>");
+                      // Assuming you want to send the first event's details
+                      const firstEvent = eventsData[0];
+                      newWindow.postMessage(firstEvent, window.location.origin);*/
+                    }}
+                  >
+                    View More
+                  </button>
+
                 </div>
               </motion.div>
             ))}
