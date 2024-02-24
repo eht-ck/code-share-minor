@@ -7,7 +7,7 @@ const Announcement = () => {
 
   return (
     <div className="announcement">
-      <div className="announce-heading">
+     <div className="announce-heading">
         Announcement & <span className="text-gray-800">Notices </span>
       </div>
       {/* <div className="announce-container overflow-y-auto"> */}
