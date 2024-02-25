@@ -21,7 +21,7 @@ const App = () => {
       <Achievements />
       {/* <Tabs /> */}
       <Announcement />
-      <Aim2 />
+      {/* <Aim2 /> */}
       <Photo_gallery />
       <Blog testimonialData={data} /> <Footer />
     </div>
