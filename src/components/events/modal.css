@@ -1,0 +1,68 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.event-more-info {
+  margin: 0;
+  padding: 24px 0;
+  text-align: justify;
+  max-height: 300px; /* Add a max-height to limit the content area */
+  overflow: auto; /* Add overflow auto to enable scrolling */
+}
+
+.modal {
+  width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  max-height: 600px; /* Add a max-height to limit the content area */
+  overflow: auto; /* Add overflow auto to enable scrolling */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.modal-event-image {
+  width: auto;
+  height: 300px; /* Adjust the height to auto to maintain aspect ratio */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  object-fit: contain; /* Add object-fit to maintain aspect ratio */
+}
+
+.event-heading {
+  margin-top: 20px; /* Add top padding */
+}
+
+.event-date,
+.event-location {
+  margin-bottom: 5px;
+}
+
+.event-description {
+  white-space: pre-wrap;
+}
