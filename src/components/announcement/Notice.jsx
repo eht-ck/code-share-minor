@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
 import axios from "axios";
-import new_button from "../../assets/new_button.jpg";
-import "./notice.css";
+import CircleIcon from "@mui/icons-material/Circle";
+import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 
+import "./notice.css";
+const CustomAutoAwesomeIcon = () => {
+  return (
+    <AutoAwesomeOutlinedIcon style={{ color: "red", fontSize: "1.5rem" }} />
+  );
+};
+const CustomCircleIcon = () => {
+  return <CircleIcon style={{ fontSize: "0.5rem", color: "#0369a0" }} />;
+};
 const AppContainer = styled.div`
   width: 100vw;
   height: 93vh;
@@ -51,14 +60,14 @@ const common = css`
   white-space: nowrap;
   height: 100%;
   width: 100%;
-  animation: ${scrollY} 20s linear infinite;
+  animation: ${scrollY} 30s linear infinite;
 `;
 
 const MarqueeGroup = styled.div`
   ${common}
 `;
 
-// ... (Your imports)
+
 
 const Notice = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -88,40 +97,27 @@ const Notice = () => {
 
     fetchAnnouncements();
 
-    // Set up interval to automatically show more
     const interval = setInterval(() => {
       setShowAll(true);
-    }, 5000); // Adjust the interval duration (in milliseconds) as needed
-
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
+    }, 5000);
+    return () => clearInterval(interval);
   }, [showAll]);
 
   return (
     <AppContainer>
       <Wrapper>
-        {/* Show only the latest announcement separately */}
         {latestAnnouncement && (
           <div
             className={`notice new-announcement2 ${showAll ? "" : "hidden"}`}
           >
             <div className="star">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="37"
-                viewBox="0 0 38 37"
-                fill="none"
-              >
-                <path
-                  d="M19 0L23.2658 12.7832H37.0701L25.9022 20.6836L30.1679 33.4668L19 25.5664L7.83208 33.4668L12.0978 20.6832L0.929926 12.7832H14.7342L19 0Z"
-                  fill="#0369A0"
-                />
-              </svg>
+              <CustomCircleIcon />
             </div>
             <div className="notice-text">{latestAnnouncement.announcement}</div>
             {showAll && (
               <div className="new-label">
-                <img src={new_button} alt="New" className="new_button" />
+                <CustomAutoAwesomeIcon />
+                NEW
               </div>
             )}
           </div>
@@ -142,18 +138,7 @@ const Notice = () => {
                 className={`notice ${index === 0 ? "new-announcement" : ""}`}
               >
                 <div className="star">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="37"
-                    viewBox="0 0 38 37"
-                    fill="none"
-                  >
-                    <path
-                      d="M19 0L23.2658 12.7832H37.0701L25.9022 20.6836L30.1679 33.4668L19 25.5664L7.83208 33.4668L12.0978 20.6832L0.929926 12.7832H14.7342L19 0Z"
-                      fill="#0369A0"
-                    />
-                  </svg>
+                  <CustomCircleIcon />
                 </div>
                 <div className="notice-text">{announcement.announcement}</div>
               </div>
