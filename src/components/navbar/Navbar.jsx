@@ -24,7 +24,8 @@ const Navbar = () => {
 
   return (
     <div className={color ? "header header-bg" : "header"}>
-      {/* <div className="header header-bg"> */}
+      {" "}
+      {/* <div className="header header-bg"> */}{" "}
       <nav className="navbar">
         <a href="/" className="logo">
           <img src={logo} alt="logo" />
@@ -35,7 +36,7 @@ const Navbar = () => {
             <FaTimes size={30} style={{ color: "#ffffff" }} />
           ) : (
             <FaBars size={30} style={{ color: "#ffffff" }} />
-          )}
+          )}{" "}
         </div>{" "}
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
@@ -46,8 +47,8 @@ const Navbar = () => {
           </li>{" "}
           <li className="nav-item">
             <Link to="/aboutus" onClick={closeMenu}>
-              ABOUT
-            </Link>
+              ABOUT{" "}
+            </Link>{" "}
           </li>{" "}
           <li className="nav-item">
             <a href="/events" onClick={closeMenu}>
@@ -63,8 +64,8 @@ const Navbar = () => {
           </li>{" "}
           <li className="nav-item">
             <Link to="/enrollment" onClick={closeMenu}>
-              ENROLLMENT
-            </Link>
+              ENROLLMENT{" "}
+            </Link>{" "}
           </li>{" "}
           <li className="nav-item">
             <a href="/FAQ" onClick={closeMenu}>
@@ -73,9 +74,9 @@ const Navbar = () => {
             </a>{" "}
           </li>{" "}
           <li className="nav-item">
-            <a href="/Signup" onClick={closeMenu}>
+            <a href="/Login" onClick={closeMenu}>
               {" "}
-              SIGN UP{" "}
+              ADMIN LOGIN{" "}
             </a>{" "}
           </li>{" "}
         </ul>{" "}
