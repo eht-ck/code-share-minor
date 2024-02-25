@@ -51,7 +51,7 @@
   padding-left: 17px;
   display: flex;
   align-items: center;
-  color: #f39c12;
+  size: 2px;
 }
 
 .notice-text {
@@ -69,8 +69,13 @@
 }
 
 .new-label {
-  margin-top: 0.5rem;
-  margin-right: 1rem;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 13px;
+  color: red;
+  font-weight: lighter;
 }
 
 .new_button {
@@ -78,9 +83,9 @@
 }
 
 .new-announcement {
-  background: #4fadf224;
+  background: #6cbbf324;
 
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
   font-weight: bold;
   padding: 0rem;
   border-radius: 15px;
@@ -93,10 +98,10 @@
   box-shadow: -7px 0px 8px rgba(54, 152, 219, 1.3);
 }
 .new-announcement2 {
-  background: #4fadf224;
+  background: #6cbbf324;
   width: 84%;
   margin-bottom: 28px;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
   font-weight: bold;
   padding: 0rem;
   border-radius: 15px;
