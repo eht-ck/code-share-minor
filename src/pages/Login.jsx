@@ -39,16 +39,16 @@ const Login = () => {
   return (
     <>
       <Navbar2 />
-      <div className="min-h-screen flex items-center justify-center h-screen">
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
-          <h1 className="text-2xl font-semibold mb-6">Login Page</h1>
+          <h1 className="text-2xl font-semibold mb-6 text-center">ADMIN LOGIN</h1>
           <form onSubmit={handleSubmit} className='login-form'>
             <div className="mb-4">
               <input
                 type="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -58,7 +58,7 @@ const Login = () => {
                 type="password"
                 placeholder="Your Password"
                 required
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -69,8 +69,8 @@ const Login = () => {
             >
               Login
             </button>
-          </form>
-         {/* <p className="mt-4 text-sm text-gray-600">
+          </form>{/*
+          <p className="mt-4 text-sm text-gray-600 text-center">
             Need to Signup? <Link to="/signup" className="text-blue-500">Create Account</Link>
           </p>*/}
         </div>
