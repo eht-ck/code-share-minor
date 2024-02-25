@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import FAQ from "./pages/FAQ";
 import Alumni from "./pages/Alumni";
 import Events from "./components/events/Events";
+import StudyMaterial from "./pages/StudyMaterial";
 // import Events from "./Components/events/Events";
 // import FAQ from "./pages/FAQ.jsx";
 import Protected from "./components/Protected";
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     path: "events",
     element: <Events />,
   },
+  {
+    path: "studymaterial",
+    element: <StudyMaterial />,
+  },
   // {
   //   path: "home",
   //   element: <Protected />,
@@ -87,7 +92,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />{" "}
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 reportWebVitals();
