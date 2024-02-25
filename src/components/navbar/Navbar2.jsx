@@ -57,12 +57,18 @@ const Navbar2 = () => {
             </Link>{" "}
           </li>{" "}
           <li className="nav-item">
+            <a href="/studymaterial" onClick={closeMenu}>
+              {" "}
+              STUDY MATERIAL{" "}
+            </a>{" "}
+          </li>{" "}
+          <li className="nav-item">
             <a href="/FAQ" onClick={closeMenu}>
               {" "}
               FAQs{" "}
             </a>{" "}
           </li>{" "}
-       {/*   <li className="nav-item">
+          {/*   <li className="nav-item">
             <a href="/login" onClick={closeMenu}>
               {" "}
              ADMIN LOGIN{" "}
