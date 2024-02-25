@@ -19,7 +19,7 @@ const FAQ_child = ({ open, toggle, title, desc }) => {
         className={`bg-blue-400 flex justify-between items-center cursor-pointer rounded-md border border-indigo-600 py-[10px] transition duration-500 ease-in-out`}
         onClick={handleToggle}
       >
-        <p className="text-[20px] font-semibold">{title}</p>
+        <p className="text-[20px] font-semibold pl-[20px]">{title}</p>
         <div className="text-[30px]">
           {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </div>
