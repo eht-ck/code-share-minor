@@ -5,6 +5,7 @@ const EditAnnouncementForm = () => {
   const [announcement, setAnnouncement] = useState([]);
   const [editingAnnouncement, setEditingAnnouncement] = useState(null);
   const [editedAnnouncement, setEditedAnnouncement] = useState({ id: null, text: "" });
+  const [confirmDelete, setConfirmDelete] = useState(false); // State to track confirmation
 
   useEffect(() => {
     fetchAnnouncement();
@@ -27,84 +28,63 @@ const EditAnnouncementForm = () => {
     try {
       await axios.delete(`http://localhost:3001/announcements/${id}`);
       setAnnouncement(announcement.filter(item => item._id !== id));
+      setConfirmDelete(false); // Reset confirm delete state after successful deletion
     } catch (error) {
       console.error("Error deleting announcement:", error);
     }
   };
 
-  const handleEdit = (announcement) => {
-  setEditingAnnouncement(announcement);
-  setEditedAnnouncement(prevState => ({
-    id: prevState.id || announcement._id,
-    text: announcement.announcement
-  }));
-};
-
-
-  const handleSaveEdit = async () => {
-  console.log(editedAnnouncement);
-  console.log(editingAnnouncement.text, editedAnnouncement.text);
-
-  try {
-    await axios.put(`http://localhost:3001/announcements/${editingAnnouncement.text}`, { announcement: editedAnnouncement.text });
-    setEditingAnnouncement(null);
-    setAnnouncement(announcement.map(item => {
-      if (item.announcement === editingAnnouncement.text) {
-        return { ...item, announcement: editedAnnouncement.text };
-      }
-      return item;
-    }));
-  } catch (error) {
-    console.error("Error editing announcement:", error);
-  } finally {
-    setEditedAnnouncement({ id: null, text: "" });
-  }
-};
-
-
   return (
-    <div>
-      <h2 className="text-xl font-semibold mb-4">Edit Announcement</h2>
-      {announcement.map((announcementItem) => (
-        <div key={announcementItem._id}>
-          <p className="border border-gray-300 p-2 mb-2">
-            Date: {new Date(announcementItem.date).toLocaleDateString()} {new Date(announcementItem.date).toLocaleTimeString()}
-          </p>
-          {editingAnnouncement && editingAnnouncement._id === announcementItem._id ? (
-            <input 
-              type="text" 
-              className="border border-gray-300 p-2 mb-2"
-              value={editedAnnouncement.text} 
-              onChange={(e) => setEditedAnnouncement({ ...editedAnnouncement, text: e.target.value })} 
-            />
-          ) : (
-            <p className="border border-gray-300 p-2 mb-2">{announcementItem.announcement}</p>
-          )}
-          {editingAnnouncement && editingAnnouncement._id === announcementItem._id ? (
-            <button 
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-              onClick={handleSaveEdit}
-            >
-              Save
-            </button>
-          ) : (
-            <div>
-              <button 
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
-                onClick={() => handleDelete(announcementItem._id)}
-              >
-                Delete
-              </button>
-              <button 
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-                onClick={() => handleEdit(announcementItem)}
-              >
-                Edit
-              </button>
-            </div>
-          )}
-        </div>
-      ))}
+    <div className="flex justify-center">
+      <div>
+        <h2 className="text-xl font-semibold mb-4">Edit Announcement</h2>
+        <table className="border-collapse border border-gray-400">
+          <thead>
+            <tr>
+              <th className="border border-gray-400 p-2">Date</th>
+              <th className="border border-gray-400 p-2">Announcement</th>
+              <th className="border border-gray-400 p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {announcement.map((announcementItem) => (
+              <tr key={announcementItem._id}>
+                <td className="border border-gray-400 p-2">
+                  {new Date(announcementItem.date).toLocaleDateString()} {new Date(announcementItem.date).toLocaleTimeString()}
+                </td>
+                <td className="border border-gray-400 p-2">
+                  <p className="border border-gray-300 p-2 mb-2">{announcementItem.announcement}</p>
+                </td>
+                <td className="border border-gray-400 p-2">
+                  {confirmDelete ? (
+                    <div>
+                      <button 
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
+                        onClick={() => handleDelete(announcementItem._id)}
+                      >
+                        Confirm Delete
+                      </button>
+                      <button 
+                        className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                        onClick={() => setConfirmDelete(false)} // Cancel delete
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <button 
+                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                      onClick={() => setConfirmDelete(true)} // Show confirm delete
+                    >
+                      Delete
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
