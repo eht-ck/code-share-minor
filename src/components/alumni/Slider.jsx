@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from "react";
 import "./slider.css"
-import data from "./data";
+import data from "./data.js";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 

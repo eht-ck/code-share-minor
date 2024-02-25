@@ -19,10 +19,10 @@ const Footer = () => {
                   <img src={phone} />
                   <div className="px-2">
                     <p id="content" className="m-0 pb-1">
-                      +91 9302286449
+                      +91 9478128407
                     </p>
                     <p id="content" className="pb-1 m-0">
-                      +91 8178818593
+                      +91 9816292461
                     </p>
                   </div>
                 </div>
@@ -31,7 +31,7 @@ const Footer = () => {
                   <div className="px-3">
                     <p id="content" className="m-0 pb-1">
                       <a
-                        href="mailto:ncc@nitj.ac.in"
+                        href="mailto:shukladk@nitj.ac.in"
                         className="text-white text-decoration-none"
                       >
                         email of ncc_nit_jalandhar
@@ -45,22 +45,7 @@ const Footer = () => {
                   Social Media:
                 </span>
                 <div className="d-flex align-items-center justify-content-between pt-4">
-                  <a
-                    target="_blank"
-                    id="logo1"
-                    href="https://www.facebook.com/"
-                    rel="noreferrer"
-                  >
-                    <img src={facebook} className="me-2" />
-                  </a>
-                  <a
-                    target="_blank"
-                    id="logo2"
-                    href="https://www.youtube.com/"
-                    rel="noreferrer"
-                  >
-                    <img src={youtube} className="me-2" />
-                  </a>
+                 
                   <a
                     target="_blank"
                     id="logo3"
