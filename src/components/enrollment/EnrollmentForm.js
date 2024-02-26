@@ -28,7 +28,9 @@ const EnrollmentForm = () => {
     const phoneRegex = /^\d{1,10}$/;
 
     if (!emailRegex.test(formData.email)) {
-      alert("Please enter a valid NITJ email address (ending with @nitj.ac.in).");
+      alert(
+        "Please enter a valid NITJ email address (ending with @nitj.ac.in)."
+      );
       return;
     }
 
@@ -77,7 +79,7 @@ const EnrollmentForm = () => {
   return (
     <>
       <div className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight px-100 py-40 bg-black text-white md:text-5xl lg:text-6xl">
-        ENROLLMENT{" "}
+        REGISTRATION{" "}
         <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
           IS OPEN ..
         </span>
