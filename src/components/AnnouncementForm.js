@@ -29,7 +29,6 @@ const AnnouncementForm = () => {
       await axios.post("http://localhost:3001/announcementDB", {
         date: currentDate,
         announcement: formData.content,
-        
       });
 
       // Reset form data after successful submission
@@ -38,8 +37,8 @@ const AnnouncementForm = () => {
         content: "",
       });
 
-      // Optionally, you can add a success message or redirect the user
-      console.log("Announcement added successfully");
+      // Show alert for successful submission
+      window.alert("Announcement added successfully");
     } catch (error) {
       // Handle error responses from the server
       console.error("Error adding announcement:", error.message);
@@ -48,12 +47,15 @@ const AnnouncementForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-8 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Add Announcement</h2>
+      <h2 className="text-2xl font-bold mb-4"> Add Announcement </h2>{" "}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-600"
+          >
             Title:
-          </label>
+          </label>{" "}
           <input
             type="text"
             id="title"
@@ -63,11 +65,14 @@ const AnnouncementForm = () => {
             required
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           />
-        </div>
+        </div>{" "}
         <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="content"
+            className="block text-sm font-medium text-gray-600"
+          >
             Content:
-          </label>
+          </label>{" "}
           <textarea
             id="content"
             name="content"
@@ -76,14 +81,14 @@ const AnnouncementForm = () => {
             required
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           />
-        </div>
+        </div>{" "}
         <button
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
         >
-          Submit
-        </button>
-      </form>
+          Submit{" "}
+        </button>{" "}
+      </form>{" "}
     </div>
   );
 };
