@@ -1,5 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const LoginBox = styled.div`
   position: fixed;
@@ -18,7 +21,7 @@ const LoginBox = styled.div`
   &.open {
     transform: translateX(0);
   }
-`
+`;
 
 const LoginFormWrapper = styled.div`
   background-color: white;
@@ -76,33 +79,81 @@ const LoginFormWrapper = styled.div`
       margin-left: 0.5rem;
     }
   }
-`
+`;
 
-const LoginForm = ({ setIsLogin }) => {
-    return (
+const Login = ({ onClose, setIsLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.endsWith('@nitj.ac.in')) {
+      setErrorMessage('Only emails with @nitj.ac.in domain are allowed.');
+      setShowErrorPopup(true);
+      return;
+    }
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem('token', user.accessToken);
+      localStorage.setItem('user', JSON.stringify(user));
+      navigate("/alumni_dashboard");
+    } catch (error) {
+      setErrorMessage('Incorrect email or password. Please try again.');
+      setShowErrorPopup(true);
+      console.error(error);
+    }
+  };
+
+  const closeErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
+  return (
+    <LoginBox onClick={onClose} className="open">
       <LoginFormWrapper>
         <h2>Login</h2>
         <label htmlFor="email">Your Email</label>
-        <input type="email" id="email" />
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <label htmlFor="password">Your Password</label>
-        <input type="password" id="password" />
-        <button type="submit">Login</button>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" onClick={handleSubmit}>Login</button>
         <p>
-          Need to Sign Up? <a href="#" onClick={() => {
-            setIsLogin(false);
-          }}>Sign Up</a>
+          Need to Sign Up?{' '}
+          <a href="#" onClick={() => setIsLogin(false)}>
+            Sign Up
+          </a>
         </p>
       </LoginFormWrapper>
-    )
-  }
-  
-
-const Login = ({ onClose, setIsLogin }) => {
-  return (
-    <LoginBox onClick={onClose} className="open">
-      <LoginForm setIsLogin={setIsLogin} />
+      {showErrorPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md">
+            <p className="text-red-500 text-center">{errorMessage}</p>
+            <button
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+              onClick={closeErrorPopup}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </LoginBox>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

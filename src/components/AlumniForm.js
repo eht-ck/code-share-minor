@@ -4,9 +4,9 @@ const AlumniForm = () => {
   // State to store form data
   const [formData, setFormData] = useState({
     name: "",
-    rollNumber: "",
+    regNumber: "",
     passingYear: "",
-    email: "",
+    rank: "",
     designation: "",
     location: "",
   });
@@ -38,9 +38,9 @@ const AlumniForm = () => {
         // Reset form data after successful submission
         setFormData({
           name: "",
-          rollNumber: "",
+          regNumber: "",
           passingYear: "",
-          email: "",
+          rank: "",
           designation: "",
           location: "",
         });
@@ -59,7 +59,10 @@ const AlumniForm = () => {
       <h2 className="text-2xl font-bold mb-4">Add Alumni Details</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-600"
+          >
             Name:
           </label>
           <input
@@ -73,21 +76,27 @@ const AlumniForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="rollNumber" className="block text-sm font-medium text-gray-600">
-            Roll Number:
+          <label
+            htmlFor="regNumber"
+            className="block text-sm font-medium text-gray-600"
+          >
+            Regimental Number:
           </label>
           <input
             type="text"
-            id="rollNumber"
-            name="rollNumber"
-            value={formData.rollNumber}
+            id="regNumber"
+            name="regNumber"
+            value={formData.regNumber}
             onChange={handleInputChange}
             required
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label htmlFor="passingYear" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="passingYear"
+            className="block text-sm font-medium text-gray-600"
+          >
             Passing Year:
           </label>
           <input
@@ -101,21 +110,27 @@ const AlumniForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-            Email:
+          <label
+            htmlFor="rank"
+            className="block text-sm font-medium text-gray-600"
+          >
+            Rank:
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            id="rank"
+            name="rank"
+            value={formData.rank}
             onChange={handleInputChange}
             required
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           />
         </div>
         <div>
-          <label htmlFor="designation" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="designation"
+            className="block text-sm font-medium text-gray-600"
+          >
             Designation:
           </label>
           <input
@@ -129,7 +144,10 @@ const AlumniForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="location" className="block text-sm font-medium text-gray-600">
+          <label
+            htmlFor="location"
+            className="block text-sm font-medium text-gray-600"
+          >
             Location:
           </label>
           <input
