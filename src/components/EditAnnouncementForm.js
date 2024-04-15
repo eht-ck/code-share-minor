@@ -3,9 +3,6 @@ import axios from "axios";
 
 const EditAnnouncementForm = () => {
   const [announcement, setAnnouncement] = useState([]);
-  const [editingAnnouncement, setEditingAnnouncement] = useState(null);
-  const [editedAnnouncement, setEditedAnnouncement] = useState({ id: null, text: "" });
-  const [confirmDelete, setConfirmDelete] = useState(false); // State to track confirmation
 
   useEffect(() => {
     fetchAnnouncement();
@@ -16,7 +13,8 @@ const EditAnnouncementForm = () => {
       const response = await axios.get("http://localhost:3001/announcements");
       const sortedAnnouncements = response.data
         .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 5);
+        .slice(0, 5)
+        .map((item) => ({ ...item, confirmDelete: false }));
       setAnnouncement(sortedAnnouncements);
     } catch (error) {
       console.error("Error fetching announcements:", error);
@@ -24,14 +22,22 @@ const EditAnnouncementForm = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!id) return; // Ensure id is defined
+    if (!id) return;
     try {
       await axios.delete(`http://localhost:3001/announcements/${id}`);
-      setAnnouncement(announcement.filter(item => item._id !== id));
-      setConfirmDelete(false); // Reset confirm delete state after successful deletion
+      setAnnouncement(announcement.filter((item) => item._id !== id));
+      window.alert("Announcement deleted successfully."); // Show alert
     } catch (error) {
       console.error("Error deleting announcement:", error);
     }
+  };
+
+  const toggleConfirmDelete = (id) => {
+    setAnnouncement(
+      announcement.map((item) =>
+        item._id === id ? { ...item, confirmDelete: !item.confirmDelete } : item
+      )
+    );
   };
 
   return (
@@ -50,31 +56,36 @@ const EditAnnouncementForm = () => {
             {announcement.map((announcementItem) => (
               <tr key={announcementItem._id}>
                 <td className="border border-gray-400 p-2">
-                  {new Date(announcementItem.date).toLocaleDateString()} {new Date(announcementItem.date).toLocaleTimeString()}
+                  {new Date(announcementItem.date).toLocaleDateString()}{" "}
+                  {new Date(announcementItem.date).toLocaleTimeString()}
                 </td>
                 <td className="border border-gray-400 p-2">
-                  <p className="border border-gray-300 p-2 mb-2">{announcementItem.announcement}</p>
+                  <p className="border border-gray-300 p-2 mb-2">
+                    {announcementItem.announcement}
+                  </p>
                 </td>
                 <td className="border border-gray-400 p-2">
-                  {confirmDelete ? (
+                  {announcementItem.confirmDelete ? (
                     <div>
-                      <button 
+                      <button
                         className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded mr-2"
                         onClick={() => handleDelete(announcementItem._id)}
                       >
                         Confirm Delete
                       </button>
-                      <button 
+                      <button
                         className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
-                        onClick={() => setConfirmDelete(false)} // Cancel delete
+                        onClick={() =>
+                          toggleConfirmDelete(announcementItem._id)
+                        } // Cancel delete
                       >
                         Cancel
                       </button>
                     </div>
                   ) : (
-                    <button 
+                    <button
                       className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-                      onClick={() => setConfirmDelete(true)} // Show confirm delete
+                      onClick={() => toggleConfirmDelete(announcementItem._id)} // Show confirm delete
                     >
                       Delete
                     </button>

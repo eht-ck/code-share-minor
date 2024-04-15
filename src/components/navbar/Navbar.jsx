@@ -68,6 +68,12 @@ const Navbar = () => {
             </Link>{" "}
           </li>{" "}
           <li className="nav-item">
+            <a href="/studymaterial" onClick={closeMenu}>
+              {" "}
+              STUDY MATERIAL{" "}
+            </a>{" "}
+          </li>{" "}
+          <li className="nav-item">
             <a href="/FAQ" onClick={closeMenu}>
               {" "}
               FAQs{" "}

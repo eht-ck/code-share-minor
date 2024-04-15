@@ -17,9 +17,9 @@ const Blog = (props) => {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === props.testimonialData.length - 1 ? 0 : prevIndex + 1,
+          prevIndex === props.testimonialData.length - 1 ? 0 : prevIndex + 1
         ),
-      delay,
+      delay
     );
 
     return () => clearTimeout(timeoutRef.current);
@@ -100,13 +100,16 @@ const Blog = (props) => {
             />
           );
         })}
-         </div>
-        <button className="relative bottom-8 right-0 mb-8 ml-8 mr-8 overflow-hidden text-sm font-medium rounded-lg  bg-sky-700">
-          <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-sky-700 text-white rounded-md ">
-            Alumni Site →
-          </span>
-        </button>
-     
+      </div>
+      <button
+        className="relative bottom-8 right-0 mb-8 ml-8 mr-8 overflow-hidden text-sm font-medium rounded-lg bg-sky-700"
+        style={{ height: "40px" }}
+        onClick={() => window.open("https://indiancc.nic.in/", "_blank")}
+      >
+        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-sky-700 text-white rounded-md">
+          Indian NCC →
+        </span>
+      </button>
     </div>
   );
 };
