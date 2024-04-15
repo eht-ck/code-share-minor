@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { auth } from '../../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const LoginBox = styled.div`
@@ -44,8 +42,7 @@ const LoginFormWrapper = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  input[type="email"],
-  input[type="password"] {
+  input[type="text"] {
     border: none;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
@@ -81,29 +78,21 @@ const LoginFormWrapper = styled.div`
   }
 `;
 
-const Login = ({ onClose, setIsLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = ({ onClose, isOpen }) => {
+  const [regimentalNumber, setRegimentalNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email.endsWith('@nitj.ac.in')) {
-      setErrorMessage('Only emails with @nitj.ac.in domain are allowed.');
-      setShowErrorPopup(true);
-      return;
-    }
+    // Your validation logic here
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
-      const user = userCredential.user;
-      localStorage.setItem('token', user.accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
+      // Your authentication logic here
+      onClose(); // Close the login modal upon successful login
       navigate("/alumni_dashboard");
     } catch (error) {
-      setErrorMessage('Incorrect email or password. Please try again.');
+      setErrorMessage('Incorrect regimental number. Please try again.');
       setShowErrorPopup(true);
       console.error(error);
     }
@@ -114,30 +103,17 @@ const Login = ({ onClose, setIsLogin }) => {
   };
 
   return (
-    <LoginBox onClick={onClose} className="open">
-      <LoginFormWrapper>
+    <LoginBox onClick={onClose} className={isOpen ? 'open' : ''}>
+      <LoginFormWrapper onClick={(e) => e.stopPropagation()}>
         <h2>Login</h2>
-        <label htmlFor="email">Your Email</label>
+        <label htmlFor="regimentalNumber">Regimental Number</label>
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Your Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          type="text"
+          id="regimentalNumber"
+          value={regimentalNumber}
+          onChange={(e) => setRegimentalNumber(e.target.value)}
         />
         <button type="submit" onClick={handleSubmit}>Login</button>
-        <p>
-          Need to Sign Up?{' '}
-          <a href="#" onClick={() => setIsLogin(false)}>
-            Sign Up
-          </a>
-        </p>
       </LoginFormWrapper>
       {showErrorPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
