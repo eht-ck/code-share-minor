@@ -8,6 +8,7 @@ import Eligibility from "./pages/Eligibility";
 import Enrollment from "./pages/Enrollment";
 import Aboutus from "./pages/AboutUs";
 import Signup from "./pages/Signup";
+import AlumniDashboard from "./pages/AlumniDashboard";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import FAQ from "./pages/FAQ";
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
   {
     path: "studymaterial",
     element: <StudyMaterial />,
+  },
+  {
+    path: "alumni_dashboard",
+    element: <AlumniDashboard />,
   },
   // {
   //   path: "home",

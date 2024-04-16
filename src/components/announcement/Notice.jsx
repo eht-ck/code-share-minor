@@ -60,14 +60,12 @@ const common = css`
   white-space: nowrap;
   height: 100%;
   width: 100%;
-  animation: ${scrollY} 30s linear infinite;
+  animation: ${scrollY} 10s linear infinite;
 `;
 
 const MarqueeGroup = styled.div`
   ${common}
 `;
-
-
 
 const Notice = () => {
   const [announcements, setAnnouncements] = useState([]);

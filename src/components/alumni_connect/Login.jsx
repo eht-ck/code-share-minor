@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const LoginBox = styled.div`
   position: fixed;
@@ -18,7 +19,7 @@ const LoginBox = styled.div`
   &.open {
     transform: translateX(0);
   }
-`
+`;
 
 const LoginFormWrapper = styled.div`
   background-color: white;
@@ -41,8 +42,7 @@ const LoginFormWrapper = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  input[type="email"],
-  input[type="password"] {
+  input[type="text"] {
     border: none;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
@@ -76,33 +76,60 @@ const LoginFormWrapper = styled.div`
       margin-left: 0.5rem;
     }
   }
-`
+`;
 
-const LoginForm = ({ setIsLogin }) => {
-    return (
-      <LoginFormWrapper>
-        <h2>Login</h2>
-        <label htmlFor="email">Your Email</label>
-        <input type="email" id="email" />
-        <label htmlFor="password">Your Password</label>
-        <input type="password" id="password" />
-        <button type="submit">Login</button>
-        <p>
-          Need to Sign Up? <a href="#" onClick={() => {
-            setIsLogin(false);
-          }}>Sign Up</a>
-        </p>
-      </LoginFormWrapper>
-    )
-  }
-  
+const Login = ({ onClose, isOpen }) => {
+  const [regimentalNumber, setRegimentalNumber] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const navigate = useNavigate();
 
-const Login = ({ onClose, setIsLogin }) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Your validation logic here
+    try {
+      // Your authentication logic here
+      onClose(); // Close the login modal upon successful login
+      navigate("/alumni_dashboard");
+    } catch (error) {
+      setErrorMessage('Incorrect regimental number. Please try again.');
+      setShowErrorPopup(true);
+      console.error(error);
+    }
+  };
+
+  const closeErrorPopup = () => {
+    setShowErrorPopup(false);
+  };
+
   return (
-    <LoginBox onClick={onClose} className="open">
-      <LoginForm setIsLogin={setIsLogin} />
+    <LoginBox onClick={onClose} className={isOpen ? 'open' : ''}>
+      <LoginFormWrapper onClick={(e) => e.stopPropagation()}>
+        <h2>Login</h2>
+        <label htmlFor="regimentalNumber">Regimental Number</label>
+        <input
+          type="text"
+          id="regimentalNumber"
+          value={regimentalNumber}
+          onChange={(e) => setRegimentalNumber(e.target.value)}
+        />
+        <button type="submit" onClick={handleSubmit}>Login</button>
+      </LoginFormWrapper>
+      {showErrorPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-md shadow-md">
+            <p className="text-red-500 text-center">{errorMessage}</p>
+            <button
+              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+              onClick={closeErrorPopup}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </LoginBox>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
