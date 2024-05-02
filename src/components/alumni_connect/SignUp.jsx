@@ -43,7 +43,8 @@ const SignUpForm = styled.form`
   }
 
   input[type="email"],
-  input[type="password"] {
+  input[type="password"],
+  input[type="text"] { /* Added type="text" for regimental number field */
     border: none;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
@@ -81,6 +82,9 @@ const SignUpForm = styled.form`
 
 const SignUp = ({ isOpen, onClose }) => {
   const [isLogin, setIsLogin] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [regimentalNumber, setRegimentalNumber] = useState('')
 
   const handleCloseClick = (event) => {
     event.preventDefault();
@@ -90,20 +94,28 @@ const SignUp = ({ isOpen, onClose }) => {
     }
   }
   
-  
-
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    // Here you can implement the sign-up logic, using the values of email, password, and regimentalNumber
+    // For example:
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Regimental Number:", regimentalNumber);
+  }
 
   return (
     <SignUpBox onClick={handleCloseClick} className={isOpen ? 'open' : ''}>
       {isLogin ? (
         <Login onClose={handleCloseClick} setIsLogin={setIsLogin} /> // Pass setIsLogin to Login
       ) : (
-        <SignUpForm>
+        <SignUpForm onSubmit={handleSignUp}>
           <h2>Sign Up</h2>
           <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" />
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label htmlFor="regimentalNumber">Regimental Number</label>
+          <input type="text" id="regimentalNumber" value={regimentalNumber} onChange={(e) => setRegimentalNumber(e.target.value)} />
           <button type="submit">Sign Up</button>
           <p>
             Need to Login? <a href="#" onClick={() => setIsLogin(true)}>Login</a>
