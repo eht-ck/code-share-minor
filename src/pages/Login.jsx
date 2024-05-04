@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar2 from '../components/navbar/Navbar2';
 
@@ -32,6 +32,18 @@ const Login = () => {
     }
   }
 
+  const handleResetPassword = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setErrorMessage('Password reset email sent. Please check your email inbox.');
+      setShowErrorPopup(true);
+    } catch (error) {
+      setErrorMessage('Email Address does not exist. Please signup');
+      setShowErrorPopup(true);
+      console.error(error);
+    }
+  }
+
   const closeErrorPopup = () => {
     setShowErrorPopup(false);
   };
@@ -48,7 +60,7 @@ const Login = () => {
                 type="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -58,7 +70,7 @@ const Login = () => {
                 type="password"
                 placeholder="Your Password"
                 required
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -69,10 +81,15 @@ const Login = () => {
             >
               Login
             </button>
-          </form>{/*
-          <p className="mt-4 text-sm text-gray-600 text-center">
-            Need to Signup? <Link to="/signup" className="text-blue-500">Create Account</Link>
-          </p>*/}
+            <button
+              type="button"
+              className='w-full mt-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400 transition duration-300'
+              onClick={handleResetPassword}
+            >
+              Reset Password
+            </button>
+          </form>
+         
         </div>
       </div>
       {showErrorPopup && (
