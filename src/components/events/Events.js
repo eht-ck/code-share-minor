@@ -180,7 +180,7 @@ const Events = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setHoveredIndex((prev) => (prev + 1) % eventsData.length);
-    }, 9000);
+    }, 20000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -269,7 +269,7 @@ const Events = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 whileHover={{ x: index === hoveredIndex ? 0 : 20 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 1, ease: "easeInOut" }}
               >
                 <motion.img
                   src={event.image}
