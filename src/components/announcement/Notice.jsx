@@ -129,19 +129,25 @@ const Notice = () => {
             ])
           }
         >
-          <MarqueeGroup>
-            {announcements.slice(0, -1).map((announcement, index) => (
-              <div
-                key={announcement._id}
-                className={`notice ${index === 0 ? "new-announcement" : ""}`}
-              >
-                <div className="star">
-                  <CustomCircleIcon />
-                </div>
-                <div className="notice-text">{announcement.announcement}</div>
-              </div>
-            ))}
-          </MarqueeGroup>
+         <MarqueeGroup>
+  {announcements.slice(0, -1).map((announcement, index) => (
+    <div
+      key={announcement._id}
+      className={`notice ${index === 0 ? "new-announcement" : ""}`}
+    >
+      <div className="star">
+        <CustomCircleIcon />
+      </div>
+      <div className="notice-text">
+        {announcement.announcement}{" "}
+        <span className="announcement-date">
+          {new Date(announcement.date).toLocaleDateString()}
+        </span>
+      </div>
+    </div>
+  ))}
+</MarqueeGroup>
+
         </Marquee>
       </Wrapper>
     </AppContainer>
