@@ -1,0 +1,116 @@
+/* NCC Study Material Styles */
+
+.ncc-study-material {
+  font-family: sans-serif;
+  margin: 0 auto; /* Center the content horizontally */
+  max-width: 1024px; /* Set a maximum width for responsiveness */
+  padding: 2rem; /* Add some padding for main content */
+}
+
+/* Header Styles */
+
+header {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 1rem;
+  display: flex; /* Allow for logo and title side-by-side */
+  justify-content: center; /* Align items horizontally in center */
+  align-items: center; /* Align items vertically */
+}
+
+header h1 {
+  font-size: 2rem; /* Adjust heading size */
+  margin: 0; /* Remove default margin */
+  text-align: center; /* Center the text within the header */
+}
+
+header img {
+  width: 100px; /* Adjust logo width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Main Content Styles */
+
+h1 {
+  font-size: 2rem; /* Adjust heading size (optional) */
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.5; /* Adjust line spacing for better readability */
+  margin-bottom: 1.5rem;
+}
+
+.certificates-section {
+  margin-top: 2rem; /* Increased spacing above section */
+}
+
+.certificates-section h2 {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center; /* Center the text */
+}
+
+.certificate-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.certificate-card {
+  width: calc(33% - 1rem); /* Calculate card width based on 3 columns */
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff; /* Light background for cards */
+}
+
+.certificate-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-card button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem; /* Adjust button padding */
+  cursor: pointer; /* Indicate clickable behavior */
+  border-radius: 5px; /* Match card border-radius */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+  margin-bottom: 9px;
+}
+
+.certificate-card button:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+}
+
+/* NCC Mini Handbook Section Styles */
+
+.handbook-section {
+  margin-top: 2rem;
+  text-align: center; /* Center the content */
+}
+
+.handbook-section h2 {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.handbook-section button {
+  background-color: #007bff; /* Blue */
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem; /* Adjust button padding */
+  cursor: pointer; /* Indicate clickable behavior */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.handbook-section button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
