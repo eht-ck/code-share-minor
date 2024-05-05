@@ -1,70 +1,84 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import CircleIcon from "@mui/icons-material/Circle";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 
-import "./notice.css";
 const CustomAutoAwesomeIcon = () => {
   return (
     <AutoAwesomeOutlinedIcon style={{ color: "red", fontSize: "1.5rem" }} />
   );
 };
+
 const CustomCircleIcon = () => {
   return <CircleIcon style={{ fontSize: "0.5rem", color: "#0369a0" }} />;
 };
-const AppContainer = styled.div`
-  width: 100vw;
-  height: 93vh;
-  color: #000000;
-  margin-top: 0rem;
+
+const AnnouncementContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const AnnouncementContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px;
+`;
+
+const AnnouncementCard = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
+const AnnouncementCardInner = styled.div`
+  border: 4px solid var(--accent);
+  border-radius: 20px;
+  background-color: var(--blue100);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow-y: auto;
+  max-height: 200px; /* Limiting max height */
 `;
 
-const Wrapper = styled.div`
+const AnnouncementTitle = styled.p`
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+`;
+
+const AnnouncementDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centering the items */
   width: 100%;
-  height: fit-content;
+`;
 
+const AnnouncementDetail = styled.p`
+  margin-bottom: 5px;
+`;
+
+const NewAnnouncement = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  color: red;
+  margin-left: auto; /* Pushing the "NEW" label to the right */
 `;
 
-const Marquee = styled.div`
-  display: flex;
-  height: 500px; /* Adjust the height based on your design */
-  width: 84%;
-  overflow: hidden;
-  user-select: none;
+const DateLabel = styled.span`
+  font-weight: bold;
 `;
 
-const scrollY = keyframes`
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(calc(-100% * 2));
-  }
-`;
-
-const common = css`
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  white-space: nowrap;
-  height: 100%;
-  width: 100%;
-  animation: ${scrollY} 20s linear infinite;
-`;
-
-const MarqueeGroup = styled.div`
-  ${common}
+const Line = styled.hr`
+  width: calc(100% - 40px);
+  border: none;
+  border-top: 2px solid black; /* Changed line color */
+  margin: 0 20px; /* Adjusted margin */
 `;
 
 const Notice = () => {
@@ -85,9 +99,13 @@ const Notice = () => {
 
         const limitedAnnouncements = showAll
           ? sortedAnnouncements.slice(1)
-          : sortedAnnouncements.slice(1, 6);
+          : sortedAnnouncements.slice(1, 4);
 
-        setAnnouncements([...limitedAnnouncements, ...limitedAnnouncements]);
+        setAnnouncements(
+          limitedAnnouncements.filter(
+            (announcement) => announcement.announcement.trim().length > 0
+          )
+        );
       } catch (error) {
         console.error("Error fetching announcements:", error);
       }
@@ -101,56 +119,65 @@ const Notice = () => {
     return () => clearInterval(interval);
   }, [showAll]);
 
+  const isValidDate = (date) => {
+    return date && !isNaN(new Date(date).getTime());
+  };
+
   return (
-    <AppContainer>
-      <Wrapper>
-        {latestAnnouncement && (
-          <div
-            className={`notice new-announcement2 ${showAll ? "" : "hidden"}`}
-          >
-            <div className="star">
-              <CustomCircleIcon />
-            </div>
-            <div className="notice-text">{latestAnnouncement.announcement}</div>
-            {showAll && (
-              <div className="new-label">
-                <CustomAutoAwesomeIcon />
-                NEW
-              </div>
-            )}
-          </div>
+    <AnnouncementContainer>
+      <AnnouncementContent>
+        {latestAnnouncement && latestAnnouncement.announcement.trim().length > 0 && (
+          <AnnouncementCard>
+            <AnnouncementCardInner>
+              <AnnouncementTitle>
+                {latestAnnouncement.announcement}
+              </AnnouncementTitle>
+              <AnnouncementDetails>
+                <AnnouncementDetail>
+                  <DateLabel>Date:</DateLabel>{" "}
+                  {isValidDate(latestAnnouncement.date)
+                    ? new Date(latestAnnouncement.date).toLocaleDateString()
+                    : "Date Not Available"}
+                </AnnouncementDetail>
+                {showAll && (
+                  <NewAnnouncement>
+                    <CustomAutoAwesomeIcon />
+                    NEW
+                  </NewAnnouncement>
+                )}
+              </AnnouncementDetails>
+            </AnnouncementCardInner>
+            {showAll && <Line />} {/* Adding line between new cards */}
+          </AnnouncementCard>
         )}
-
-        <Marquee
-          onAnimationIteration={() =>
-            setAnnouncements((announcements) => [
-              announcements[announcements.length - 1],
-              ...announcements.slice(0, -1),
-            ])
-          }
-        >
-         <MarqueeGroup>
-  {announcements.slice(0, -1).map((announcement, index) => (
-    <div
-      key={announcement._id}
-      className={`notice ${index === 0 ? "new-announcement" : ""}`}
-    >
-      <div className="star">
-        <CustomCircleIcon />
-      </div>
-      <div className="notice-text">
-        {announcement.announcement}{" "}
-        <span className="announcement-date">
-          {new Date(announcement.date).toLocaleDateString()}
-        </span>
-      </div>
-    </div>
-  ))}
-</MarqueeGroup>
-
-        </Marquee>
-      </Wrapper>
-    </AppContainer>
+        {announcements.map((announcement, index) => (
+          <React.Fragment key={announcement._id}>
+            <AnnouncementCard>
+              <AnnouncementCardInner>
+                <AnnouncementTitle>
+                  {announcement.announcement}
+                </AnnouncementTitle>
+                <AnnouncementDetails>
+                  <AnnouncementDetail>
+                    <DateLabel>Date:</DateLabel>{" "}
+                    {isValidDate(announcement.date)
+                      ? new Date(announcement.date).toLocaleDateString()
+                      : "Date Not Available"}
+                  </AnnouncementDetail>
+                  {index === 0 && showAll && (
+                    <NewAnnouncement>
+                      <CustomAutoAwesomeIcon />
+                      NEW
+                    </NewAnnouncement>
+                  )}
+                </AnnouncementDetails>
+              </AnnouncementCardInner>
+            </AnnouncementCard>
+            {index < announcements.length - 1 && <Line />}
+          </React.Fragment>
+        ))}
+      </AnnouncementContent>
+    </AnnouncementContainer>
   );
 };
 
