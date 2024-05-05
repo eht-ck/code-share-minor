@@ -60,7 +60,7 @@ const common = css`
   white-space: nowrap;
   height: 100%;
   width: 100%;
-  animation: ${scrollY} 10s linear infinite;
+  animation: ${scrollY} 20s linear infinite;
 `;
 
 const MarqueeGroup = styled.div`

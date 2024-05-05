@@ -1,59 +1,81 @@
-import React from 'react';
+import React, { useState } from "react";
+import CertificateCard from "./CertificateCard";
+import "./NCCStudyMaterial.css"; // Import your CSS file
 
-const NccStudyMaterial = () => {
+const NCCStudyMaterial = () => {
+  const [certificates] = useState([
+    {
+      id: 1,
+      type: "A",
+      name: "Certificate A Papers",
+      description: "",
+      downloadLink:
+        "https://drive.google.com/file/d/1S_hiodzkTAWLHycJNA4U4amBNR8mjel5/view?usp=sharing",
+    },
+    {
+      id: 2,
+      type: "B",
+      name: "Certificate B Papers",
+      description: "",
+      downloadLink:
+        "https://drive.google.com/file/d/1S_hiodzkTAWLHycJNA4U4amBNR8mjel5/view",
+    },
+    {
+      id: 3,
+      type: "C",
+      name: "Certificate C Papers",
+      description: "",
+      downloadLink:
+        "https://drive.google.com/file/d/1S_hiodzkTAWLHycJNA4U4amBNR8mjel5/view",
+    },
+  ]);
+
+  const handleDownloadCertificate = (certificate) => {
+    window.location.href = certificate.downloadLink;
+  };
+
+  const handleDownloadHandbook = () => {
+    // Add link for downloading NCC mini handbook
+    window.location.href = "https://example.com/ncc-handbook.pdf";
+  };
+
   return (
-    <div className="bg-blue-100">
-      <div className="max-w-4xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6 text-center">Study Material for NCC Exam</h1>
-        <div className="grid grid-cols-3 gap-4 p-4">
-          {/* Add links to PDFs here */}
-          {/* For example: */}
-          <a href="#" className="border border-gray-300 p-2 rounded-md text-center hover:bg-orange-400">Download ‘A’ Certificate Papers</a>
-          <a href="#" className="border border-gray-300 p-2 rounded-md text-center hover:bg-orange-400">Download ‘B’ Certificate Papers</a>
-          <a href="#" className="border border-gray-300 p-2 rounded-md text-center hover:bg-orange-400">Download ‘C’ Certificate Papers</a>
-        </div>
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-2 bg-blue-400 text-white p-2 rounded">‘A’ CERTIFICATE</h2>
-          <ul className="list-disc list-inside">
-            <li>The Cadet must have attended a minimum of 75% of total training periods laid down in the syllabus for the first and second years of Junior Division/Wing NCC (All Wings).</li>
-            <li>In order to count his previous tenure, the break in the NCC Training Tenure of the cadet prior to his appearing in the exam should not exceed more than 12 months at one time.</li>
-            <li>If the break exceeds 12 months and the cadet has been on the unit rolls for a minimum of two years before his discharge and had attended 75% of the total periods during his NCC Tenure, he will need another 36 periods of training to become eligible to appear for Certificate A examination.</li>
-            <li>In all other cases, where the above conditions are not fulfilled, the cadet must attend a minimum of 75% periods of the first and second years of training.</li>
-            <li>Must have attended one Annual Training Camp.</li>
-          </ul>
-        </div>
+    <div className="ncc-study-material">
+      <header>{/* Header content (logo, title, etc.) */}</header>
+      <main>
+        <h1>NCC Study Material</h1>
+        <p>{/* Brief description about NCC and study materials */}</p>
+        <section className="certificates-section">
+          <h2>Download Certificates Papers</h2>
+          <div className="certificate-cards">
+            {certificates.map((certificate) => (
+              <CertificateCard
+                key={certificate.id}
+                certificate={certificate}
+                onDownload={handleDownloadCertificate}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="handbook-section">
+          <h2>Download NCC Mini Handbook</h2>
+          <button
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/file/d/1UwaW96rpVVY1YMhOApX3JBN7IqoaP9-M/view?usp=sharing",
+                "_blank"
+              )
+            }
+          >
+            Download Handbook
+          </button>
+        </section>
 
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-2 bg-blue-400 text-white p-2 rounded">‘B’ CERTIFICATE</h2>
-          <ul className="list-disc list-inside">
-            <li>The cadet must have attended a minimum of 75% of total training periods laid down in the syllabus for the first and second years for Senior Division/Wing NCC (All Wings).</li>
-            <li>Break in the NCC Training Tenure of the cadet SD/ SW prior to appearing in the exam should not exceed more than 18 months at one time after his discharge to count his tenure for Certificate B Examination.</li>
-            <li>If the break exceeds 18 months and the cadet had been on the unit rolls for a minimum of two years before his discharge and had attended 75% of the total periods during his NCC Tenure, he will need another 36 periods of training to become eligible to appear for Certificate B Examination.</li>
-            <li>In all other cases where the above conditions are not fulfilled, the cadet must attend a minimum of 75% periods of the first & second years of training.</li>
-            <li>Must have attended one Annual Training Camp /NIC /COC / RDC / Attachment with Regular Army/Navy/Air Force.</li>
-            <li>Cadets possessing Certificate A will be awarded 10 bonus marks.</li>
-          </ul>
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-2 bg-blue-400 text-white p-2 rounded">‘C’ CERTIFICATE</h2>
-          <ul className="list-disc list-inside">
-            <li>The cadet must be in possession of Certificate B.</li>
-            <li>The cadet must be in the third year of Senior Division/Senior Wing NCC Training.</li>
-            <li>The cadet must have attended a minimum of 75% of the periods of 3rd year syllabus during the academic session.</li>
-            <li>Break in the NCC Training Tenure of the cadet SD/SW prior to appearing in the Exam should not exceed more than 18 months at one time after his discharge to count his previous tenure for Certificate C examination.</li>
-            <li>If the break exceeds 18 months and the cadet had been on the unit rolls for a minimum of two years before his discharge and attended 75% of the total period during his NCC Tenure, he will need another 30 periods of training to become eligible for Certificate C examination.</li>
-            <li>In other cases where the above conditions are not fulfilled, the cadet must attend a minimum of 75% periods of the third year of training.</li>
-            <li>Must have attended one ATC and in addition, one of the following in a three-year tenure: Annual Training Camp, Republic Day Camp at Delhi (RDC), Centrally Organized Camp (COC), Ordered by HQ DGNCC Para Training Camp (PTC), Para Training Camp (PTC), National Integration Camp (NIC) (When applicable for SD/ SW Cadets), All India Trekking Expedition (HQ DGNCC Organized), All India Mountaineering Expedition (HQ DGNCC Organized).</li>
-            <li>Attachment Training with any one of the following: Army Unit, Air Force Station, Naval Base/ Establishment/ Ship/ Sea Training, Service Hospital.</li>
-            <li>Any one of the following Adventure Courses: Mountaineering Basic Course, Mountaineering Advance Course, Water Skiing/Snow Skiing Courses, Snow & Ice (Condensed) Course, Sailing expedition with actual sailing exceeding 10 days, duly approved by HQ DGNCC, Participated in NRAI matches as part of HQ DGNCC/Directorate team, Scuba Diving Course, Youth Exchange Programme, Foreign cruise (Navy or Coast Guard).</li>
-            <li>Cadets will be allowed to appear for Certificate C examination only after one year of passing Certificate B examination.</li>
-            <li>Air Wing Cadets should have flown a minimum of four Sorties in Micro light air craft.</li>
-          </ul>
-        </div>
-      </div>
+        {/* Additional sections (information about certificates, resources) */}
+      </main>
+      <footer>{/* Footer content (NCC contact, copyright, etc.) */}</footer>
     </div>
   );
-}
+};
 
-export default NccStudyMaterial;
+export default NCCStudyMaterial;
