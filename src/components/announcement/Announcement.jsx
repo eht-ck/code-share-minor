@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./announcement.css";
 import Notice from "./Notice";
 
 const Announcement = () => {
-  const [activeTab, setActiveTab] = useState("tab1");
-
   return (
     <div className="announcement">
-     <div className="announce-heading">
-        Announcement & <span className="text-gray-800">Notices </span>
+      <div className="announce-heading">
+        Announcement & <span className="text-dark-purple">Notices </span>
       </div>
-      {/* <div className="announce-container overflow-y-auto"> */}
-      <Notice />
-      {/* </div> */}
+      <div className="announcement-container">
+        <Notice />
+      </div>
     </div>
   );
 };
