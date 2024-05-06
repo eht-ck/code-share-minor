@@ -60,6 +60,8 @@ const EnrollmentForm = () => {
 
       if (response.ok) {
         alert("Registration successful!");
+        // Redirect user to the provided link after successful registration
+        window.location.href = "https://drive.google.com/file/d/19KcxQYayTgOb86nTeKnPC3ANPAulz_92/view?usp=sharing";
         setFormData({
           name: "",
           branch: "",
